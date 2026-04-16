@@ -5,7 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    
+<body style="background-color: black; color: white;">
+    <ul class="language">
+        <li>Javscript</li>
+    </ul>
 </body>
+<script>
+    function addLanguge(language){
+        const li=document.createElement("li")
+        li.innerHTML=language
+        document.querySelector(".language").appendChild(li)
+    }
+    addLanguge("Python")
+    function  addOptiLanguage(language){
+        const li=document.createElement("li")
+        li.appendChild(document.createTextNode(language))
+        document.querySelector(".language").appendChild(li)
+    }
+    addOptiLanguage("java")
+
+    //Edit the existing element
+    const secondlang=document.querySelector("li:nth-child(2)")
+    //secondlang.innerHTML="C++"
+    const newlang=document.createElement("li")
+    newlang.textContent="C++"
+    secondlang.replaceWith(newlang)
+
+    const firstlang=document.querySelector("li:first-child")
+    const newfirstlang=document.createElement("li")
+    newfirstlang.textContent="HTML"
+    firstlang.replaceWith(newfirstlang)     
+
+    const lastlang=document.querySelector("li:last-child")
+    lastlang.outerHTML="<li>TypeScirpt</li>" //replace the last element with the new element
+
+    //remove last element
+    const lastlang1=document.querySelector("li:last-child")
+    lastlang1.remove()
+</script>
+
+
 </html>

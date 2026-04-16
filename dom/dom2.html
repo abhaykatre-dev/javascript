@@ -23,6 +23,17 @@
     }
     parent.children[0].innerHTML="Monday is the first day of the week" //change text of the first child
     parent.children[0].style.color="red" //change color of the first child
+    // console.log(parent.firstElementChild) //gives the first child element of the parent4
+    // console.log(parent.lastElementChild)     //gives the last child element of the parent
+
+    const dayone=document.querySelector(".day") //gives the first element with the class name "day"
+    // console.log(dayone)
+    // console.log(dayone.nextElementSibling) //gives the next sibling of the first element with the class name "day"
+    // console.log(dayone.nextElementSibling.nextElementSibling) //gives the next sibling of
+    // console.log(dayone.parentElement) //gives the parent element of the first element with the class name "day"
+    console.log("Nodes : ",parent.childNodes)
+    console.log("Nodes : ",parent.childNodes[0])
+    console.log("Nodes : ",parent.childNodes[1])
 </script>
 
 </html>

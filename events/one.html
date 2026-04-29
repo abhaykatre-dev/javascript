@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events </title>
+</head>
+
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="photoshop" "></li> <!--onclick=" alert('photoshop')-->
+            <li><img width="200px" id="japan"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="owl"
+                    src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="prayer"
+                    src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // Old way (still works but not recommended)
+    // document.getElementById("photoshop").onclick = function () {
+    //     alert("photoshop clicked");
+    // };
+
+    // attachEvent()
+    // Used in old Internet Explorer (IE8 and below)
+    // Problems:
+    // - Only works in old IE
+    // - Uses "onclick" instead of "click"
+    // - No capturing phase (only bubbling)
+    // - `this` points to window
+    // element.attachEvent("onclick", function() {
+    //     alert("clicked");
+    // });
+
+
+    // jQuery .on()
+    // $("#photoshop").on("click", function () {
+    //     alert("clicked");
+    // });
+
+    // Why .on() was popular:
+    // - Cross-browser support (especially old IE)
+    // - Cleaner syntax
+    // - Easy event delegation
+
+
+    // Modern & best way
+    // document.querySelector("#photoshop").addEventListener("click", function () {
+    //     alert("photoshop clicked");
+    // }, false);
+
+
+    // Event flow
+    // 1. Capturing phase (top → down)
+    // 2. Target phase
+    // 3. Bubbling phase (bottom → up)
+
+    // true  → capturing phase
+    // false → bubbling phase (default)
+
+
+    // Important:
+    // - Single element → no visible difference
+    // - Nested elements → order changes
+
+    //bubbling and stop propogation
+    // document.querySelector("#images").addEventListener("click", function (e) {
+    //     console.log("click inside the ul")
+    // }, false)
+    // document.querySelector("#owl").addEventListener("click", function (e) {
+    //     console.log("Owl clicked")
+    // }, false)
+    // //output owl cliked --> click inside the ul  child → parent
+
+    // document.querySelector("#images").addEventListener("click", function (e) {
+    //     console.log("click inside the ul")
+    // }, false)
+    // document.querySelector("#owl").addEventListener("click", function (e) {
+    //     console.log("Owl clicked")
+    //     e.stopPropagation()
+    // }, false) //output - owl clicked 
+
+
+    // document.querySelector("#images").addEventListener("click", function (e) {
+    //     console.log("click inside the ul")
+    // }, true)
+    // document.querySelector("#owl").addEventListener("click", function (e) {
+    //     console.log("Owl clicked")
+    // }, true)
+    //     //output click inside the ul --> owl cliked  parent → child
+
+
+    // document.querySelector("#photoshop").addEventListener("click", function (e) {
+    //     console.log(e)
+    //     console.log(e.type)
+    //     console.log(e.timeStamp);
+    //     console.log(e.target);
+    //     console.log(e.target.id);
+    //     console.log(e.currentTarget);
+    //     console.log(e.clientX, e.clientY);
+    //     console.log(e.screenX, e.screenY);
+    //     console.log(e.altKey); // true/false
+    // }, false);
+
+    // //preventdefault
+    // document.querySelector("#google").addEventListener('click',function(e){
+    //     e.preventDefault()
+    //     console.log("stop redirecting")
+    // })
+
+    document.querySelector("#images").addEventListener('click', (e) => {
+        let removeIT = e.target.parentNode
+        // console.log(removeIT)
+        // console.log(e.target.tagName)
+        if (e.target.tagName === 'IMG') {
+            removeIT.remove() // with this condition it will remove images child all list
+            console.log(e.target.id)
+            // removeIT.parentNode.removeChild(removeIT)
+        }
+  
+    })
+
+
+</script>
+
+</html>

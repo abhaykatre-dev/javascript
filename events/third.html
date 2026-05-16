@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Waiting...</h1>
+    <button id="start">start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    let intervalId;
+    const saydate = function (str) {
+        console.log(str, Date.now())
+        const p = document.createElement('p')
+        p.textContent = `${str} ${Date.now()}`
+        document.body.appendChild(p)
+    }
+    document.querySelector('#start').addEventListener('click', function () {
+        if(!intervalId){
+           intervalId = setInterval(saydate, 1000, "Hii")//hii is third parameter
+        }
+    })
+
+    document.querySelector('#stop').addEventListener('click', function () {
+        clearInterval(intervalId)
+        intervalId=null
+    })
+</script>
+
+</html>

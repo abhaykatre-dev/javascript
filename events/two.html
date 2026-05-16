@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Waiting...</h1>
+
+<button id="stop">Stop</button>
+
+<script>
+    let myTimeout = setTimeout(function () {
+        document.querySelector("h1").innerHTML = "Hello Ji";
+    }, 5000);
+
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(myTimeout)
+        console.log("Stopped")
+    })
+    
+</script>
+
+</body>
+</html>
